@@ -272,11 +272,12 @@ h5, .h5 {
 		}
 	}
 		.cta-text {
+			margin-top: 80px;
 			float: left;
 			background-color: rgba(66,87,108,.5);
 			color: #FFF;
 			text-align: right;
-			padding: 3px 1em;
+			padding: 4px 1em;
 
 			h3 {
 				margin: 0;
@@ -290,13 +291,12 @@ h5, .h5 {
 			}
 		}
 		.cta-arrow {
+			margin-top: 80px;
 			float: left;
 			background-image: url(../images/cta-arrow.png);
+			background-position: center right;
 			width: 292px;
-			height: 68px;
-		}
-		.h-align {
-			margin-top: 50px;
+			height: 81px;
 		}
 }
 
@@ -391,8 +391,8 @@ and more scalable.
 #content {
 	#inner-content {
 		padding-top: 2.2em;
-		/*padding-left: 1em;
-		padding-right: 1em;*/	
+		padding-left: 1.5em;
+		padding-right: 1.5em;	
 
 		background-color: #fff;
 	}
@@ -546,6 +546,34 @@ and more scalable.
 		.size-large {}
 		.size-medium {}
 		.size-thumbnail {}
+
+		.youtube-video {
+			width: 100%;
+			margin: 1em;
+			max-width: 100%;
+			min-height: 280px;
+			max-height: 480px;
+		}
+
+		.zilla-button.medium.grey.square {
+			box-shadow: none;
+			width: 100%;
+			border: solid 0px #000 !important;
+			border-radius: 0 !important;
+			text-align: left;
+		}
+
+.page-template-page-nosiderbar-notitle-php {
+	#content {
+		#inner-content {
+			padding-top: 0;
+
+			header.article-header {
+				display: none;
+			}
+		}
+	}
+}
 
 /******************************************************************
 09. PAGE NAVI STYLES
@@ -962,10 +990,15 @@ and more scalable.
 
 .footer {
 	clear: both;
+
+	.strip {
+		background-color: #373a3e;		
+		padding: 0 1.5em;
+	}
+
 	#inner-footer {
-		/*padding-left: 1em;
-		padding-right: 1em;*/	
-		background-color: #fff;
+		padding: 10px 0 35px;
+		background-color: #000;
 	}
 	nav {
 		ul.nav {
@@ -977,6 +1010,47 @@ and more scalable.
 				&:last-child {}
 			}
 		}
+	}
+	.widget_facebook-like-box {
+		width: 31.491712705%;
+		position: relative;
+		float: left;
+		margin-left: 0%;
+		.fb_iframe_widget {
+			width: 100% !important;
+			&>span, iframe {
+				width: 100% !important;
+			}
+		}
+	}
+	.kebo_twitter_feed_widget {
+		width: 31.491712705%;
+		position: relative;
+		float: left;
+		margin-left: 2.762430939%;
+		.widgettitle {
+			margin-top: 0;
+		}
+		.kebo-tweets {
+			font-size: 12px
+		}
+	}
+	.widgetcform {		
+		width: 31.491712705%;
+		position: relative;
+		float: right;
+		margin-left: 2.762430939%;
+		.widgettitle {
+			margin-top: 0;
+		}
+	}
+	.source-org {
+		float: right;
+		clear: both;
+		text-transform: uppercase;
+		font-size: 15px;
+		font-weight: 600;
+		color: #9c9c9c;
 	}
 }
 
@@ -1002,3 +1076,22 @@ and more scalable.
 
 	.copyright {}
 
+.footer {	
+	.cform {
+		width:100%;
+
+		.emailreqtxt, .reqtxt {
+			text-align: right;
+			float: right;
+		}
+		input, textarea {
+			width: 100%;
+		}
+		input.backbutton, input.resetbutton, input.sendbutton {
+			background: #262626;
+			color: #efefef;
+			border: none;
+		}
+	}
+	.linklove {display: none;}
+}

@@ -22,6 +22,7 @@ define('DB_NAME', 'myocracy');
 define('DB_USER', 'admin');
 
 /** MySQL database password */
+define('DB_PASSWORD', '1234');
 define('DB_PASSWORD', '123!!@qwe');
 
 /** MySQL hostname */
