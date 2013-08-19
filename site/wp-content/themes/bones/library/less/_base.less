@@ -421,6 +421,12 @@ and more scalable.
 		.intro.h2{
 			line-height: 1.1em
 		}
+		.entry-content {
+			ul, ol {
+				padding: .5em 0 0 2em;
+				list-style-type: circle;
+			}
+		}
 	}
 	.matte {
 		background-color: #fff;
@@ -1241,4 +1247,33 @@ and more scalable.
 	&.top {
 		margin-top: 1em !important;
 	}
+}
+
+.zilla-toggle-inner {
+	height: auto !important;
+}
+.zilla-toggle .ui-state-active .ui-icon {
+	background: url(../images/toggle-open.png) no-repeat;
+}
+.zilla-toggle span.ui-icon {
+	background: url(../images/toggle-closed.png) no-repeat;
+	width: 21px;
+	height: 21px;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	margin: -10px 0 0 0;
+}
+.zilla-toggle .zilla-toggle-title {
+	background: transparent;
+	border: none;
+	font-size: 20px;
+	font-weight: 600;
+	&:hover {
+		border: none;
+	}
+}
+.zilla-toggle-inner {
+	border: none;
+	padding: 10px 0 0 50px;
 }
