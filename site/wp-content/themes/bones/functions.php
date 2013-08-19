@@ -24,6 +24,7 @@ sidebars, comments, ect.
 	- adding custom fields to user profiles
 */
 require_once('library/bones.php'); // if you remove this, bones will break
+require_once('library/m_toolbox.php'); // if you remove this, bones will break
 /*
 2. library/custom-post-type.php
     - an example custom post type
@@ -171,5 +172,11 @@ function bones_wpsearch($form) {
     return $form;
 } // don't remove this bracket!
 
-
-?>
+/*// REMOVE BAD P and BR TAGS FROM NAME ANCHORS
+add_filter('the_content', 'remove_bad_pbr_tags');
+function remove_bad_pbr_tags($content) {
+        $pattern = '/<br*\/>(?=\s*<h([1-9])>)/sm';
+        $replacement = "";
+    $content = preg_replace($pattern, $replacement, $content);
+    return $content;
+}*/

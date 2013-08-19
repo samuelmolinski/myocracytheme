@@ -90,6 +90,10 @@ body {
 	width: 96%;
 	margin: 0 auto;
 }
+.fullwidth {
+	width: 100%;
+	max-width: 100%;
+}
 
 /*********************
 04. LINK STYLES
@@ -164,7 +168,9 @@ h5, .h5 {
 	text-transform: uppercase;
 	letter-spacing: 2px;
 }
-
+.uppercase {
+	text-transform: uppercase;
+}
 /*********************
 06. HEADER SYTLES
 *********************/
@@ -194,16 +200,16 @@ h5, .h5 {
 		overflow:hidden;
 		background-image: url(../images/logo.png);
 		background-repeat: no-repeat;
-		width: 364px;
+		background-size: 100%;
+		background-position: center top;
+		width: 100%;
 		height: 83px;
-		float: left;
 		margin-left: 1em;
 	}
 
 
 	nav {
-		float: right;
-		height: 83px;
+		position: relative;
 		ul.nav {
 			li {
 				a {}
@@ -218,14 +224,13 @@ h5, .h5 {
 			margin: 0;			
 			background-color: #373a3e;
 			.menu-item {
-				background-position: center 35px;
+				background-position: center bottom;
 				background-repeat: no-repeat;
 				padding-top: 1em;
-				height: 83px;
+				height: 45px;
+
 				&:hover, &.current-menu-item {
 					background-color: #000;
-					height: 93px;
-					margin-bottom: -10px;
 				}
 			}
 			.menu-home {
@@ -256,6 +261,8 @@ h5, .h5 {
 					text-decoration: none;
 					background-color: transparent;
 					border-bottom: none;
+					width: 100%;
+					height: 100%;
 				}
 			}
 		}
@@ -265,18 +272,20 @@ h5, .h5 {
 		width: 100%;
 		max-width: 100%;
 		background-image: url(../images/splash.jpg);
+		background-size: 1140px 100%;
 		box-shadow: 0 0 15px inset rgba(0,0,0,.5);
-		height: 104px;
+		min-height: 104px;
 		&.s-full {
-			height: 240px;
+			min-height: 240px;
 		}
 	}
 		.cta-text {
-			margin-top: 80px;
-			float: left;
+			margin-top: 1em;
+			//float: left;
+			width: 100%;
 			background-color: rgba(66,87,108,.5);
 			color: #FFF;
-			text-align: right;
+			text-align: center;
 			padding: 4px 1em;
 
 			h3 {
@@ -291,12 +300,27 @@ h5, .h5 {
 			}
 		}
 		.cta-arrow {
-			margin-top: 80px;
-			float: left;
+			//float: right;
+			text-align: center;
 			background-image: url(../images/cta-arrow.png);
 			background-position: center right;
-			width: 292px;
+			width: 100%;
 			height: 81px;
+			margin: auto;
+			margin-bottom: 1em;
+			cursor: pointer;
+			font-size: 28px;
+			text-transform: uppercase;
+			span {
+				margin-top: 18px;
+				display: inline-block;
+			}
+			.font-red {
+				color: #ec2432;
+			}
+			.font-white {
+				color: #ffffff;
+			}
 		}
 }
 
@@ -313,7 +337,6 @@ and more scalable.
 */
 
 .nav {
-	border: 1px solid #ccc;
 	border-bottom: 0;
 
 	li {
@@ -394,7 +417,14 @@ and more scalable.
 		padding-left: 1.5em;
 		padding-right: 1.5em;	
 
+		background-color: #efefef;
+		.intro.h2{
+			line-height: 1.1em
+		}
+	}
+	.matte {
 		background-color: #fff;
+		padding: 1em;
 	}
 }
 
@@ -549,8 +579,8 @@ and more scalable.
 
 		.youtube-video {
 			width: 100%;
-			margin: 1em;
 			max-width: 100%;
+			height: 310px;
 			min-height: 280px;
 			max-height: 480px;
 		}
@@ -561,6 +591,72 @@ and more scalable.
 			border: solid 0px #000 !important;
 			border-radius: 0 !important;
 			text-align: left;
+		}
+		.issue {
+			color: #fff;
+			background-color: #373a3e;
+			a {
+				display: block;
+
+				img {
+					display: block;
+					margin: 0;
+					padding: 0;
+					width: 100%;
+				}
+				&.issueLink {
+					width: 100%
+					padding: 1em 1em 0;
+					max-width: 100%;
+				}
+			}
+			h2 {
+				margin-top: -40px;
+				display: block;
+				height: 40px;
+				font-size: 20px;
+				background-color: #000;
+				background-color: rgba(0,0,0,.6);
+				position: relative;
+				width: 100%;
+				padding: 7px;
+			}
+			.col-r {
+				width:70%;
+				float: left;
+				font-size: 13px;
+				padding: 10px 15px;
+				.party {
+					font-weight: 600;
+					font-style: italic;
+				}
+				.position {
+				}
+				.location {
+					font-weight: 600;
+				}
+			}
+			.col-l {
+				width: 29%;
+				float: right;
+				font-size: 15px;
+				font-weight: 600;
+				span {
+					color: #fff;
+					width: 100%;
+					display: inline-block;
+					padding: 5px;
+					color: #fff;
+					max-width: 100%;
+				}
+				.share {
+					background-color: #000000;
+				}
+				.give {
+					margin-top: 8px;
+					background-color: #9e1822;
+				}
+			}
 		}
 
 .page-template-page-nosiderbar-notitle-php {
@@ -574,6 +670,28 @@ and more scalable.
 		}
 	}
 }
+
+#container {
+	.zilla-one-half, .zilla-one-third, .zilla-two-third, .zilla-one-fourth, .zilla-three-fourth, .zilla-one-fifth, .zilla-two-fifth, .zilla-three-fifth, .zilla-four-fifth, .zilla-one-sixth, .zilla-five-sixth { width: 100%; }
+
+	.zilla-one-half,
+	.zilla-one-third,
+	.zilla-two-third,
+	.zilla-three-fourth,
+	.zilla-one-fourth,
+	.zilla-one-fifth,
+	.zilla-two-fifth,
+	.zilla-three-fifth,
+	.zilla-four-fifth,
+	.zilla-one-sixth,
+	.zilla-five-sixth {
+		position: relative;
+		margin-right: 0;
+		margin-bottom: 10px;
+		float: none;
+	}
+}
+
 
 /******************************************************************
 09. PAGE NAVI STYLES
@@ -999,6 +1117,26 @@ and more scalable.
 	#inner-footer {
 		padding: 10px 0 35px;
 		background-color: #000;
+		color: #9c9c9c;
+
+		a, a:visited {
+			color: darken(@bones-blue, 9%);
+
+			/* on hover */
+			&:hover, &:focus {
+				color: @bones-blue;
+			}
+
+			/* mobile tap color */
+			&:link {
+				/*
+				this highlights links on iPhones/iPads.
+				so it basically works like the :hover selector
+				for mobile devices.
+				*/
+				-webkit-tap-highlight-color : rgba( 0, 0, 0, 0.3 );
+			}
+		}
 	}
 	nav {
 		ul.nav {
@@ -1011,7 +1149,7 @@ and more scalable.
 			}
 		}
 	}
-	.widget_facebook-like-box {
+	/*.widget_facebook-like-box {
 		width: 31.491712705%;
 		position: relative;
 		float: left;
@@ -1022,12 +1160,12 @@ and more scalable.
 				width: 100% !important;
 			}
 		}
-	}
+	}*/
 	.kebo_twitter_feed_widget {
-		width: 31.491712705%;
+		width: 48.618784527%;
 		position: relative;
 		float: left;
-		margin-left: 2.762430939%;
+		margin-left: 0%;
 		.widgettitle {
 			margin-top: 0;
 		}
@@ -1036,7 +1174,7 @@ and more scalable.
 		}
 	}
 	.widgetcform {		
-		width: 31.491712705%;
+		width: 48.618784527%;
 		position: relative;
 		float: right;
 		margin-left: 2.762430939%;
@@ -1094,4 +1232,13 @@ and more scalable.
 		}
 	}
 	.linklove {display: none;}
+}
+
+.zilla-button {
+	&.last {
+		margin-bottom: 0 !important;
+	}
+	&.top {
+		margin-top: 1em !important;
+	}
 }

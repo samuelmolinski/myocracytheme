@@ -22,7 +22,7 @@
 		
 		<!-- all js scripts are loaded in library/bones.php -->
 		<?php wp_footer(); ?>
-		<script type="text/javascript" src="http://site.name/share42/share42.js"></script>
+		<!--<script type="text/javascript" src="http://site.name/share42/share42.js"></script>-->
 	</body>
 
 </html> <!-- end page. what a ride! -->

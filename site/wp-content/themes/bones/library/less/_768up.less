@@ -27,19 +27,119 @@ LAYOUT & GRID STYLES
 	max-width: 1140px;
 }
 
+#container {
+	.zilla-one-half { width: 48.618784527%; }
+	.zilla-one-third { width: 31.491712705%; }
+	.zilla-two-third { width: 65.74585634900001%; }
+	.zilla-one-fourth { width: 22.928176794%; }
+	.zilla-three-fourth { width: 74.30939226%; }
+	.zilla-one-fifth { width: 16.8%; }
+	.zilla-two-fifth { width: 37.6%; }
+	.zilla-three-fifth { width: 58.4%; }
+	.zilla-four-fifth { width: 79.2%; }
+	.zilla-one-sixth { width: 14.364640883%; }
+	.zilla-five-sixth { width: 82.87292817100001%; }
+
+	.zilla-one-half,
+	.zilla-one-third,
+	.zilla-two-third,
+	.zilla-three-fourth,
+	.zilla-one-fourth,
+	.zilla-one-fifth,
+	.zilla-two-fifth,
+	.zilla-three-fifth,
+	.zilla-four-fifth,
+	.zilla-one-sixth,
+	.zilla-five-sixth {
+		position: relative;
+		margin-right: 2.762430939%;
+		float: left;
+	}
+
+	.zilla-column-last {
+		margin-right: 0!important;
+		clear: right;
+	}
+}
 /*********************
 HEADER SYTLES
 *********************/
 
-.header {}
+.header {
+	#logo {		
+		width: 364px;
+		height: 83px;
+		float: left;
+		margin-left: 1em;
+	}
 
-	#logo {}
+
+	#menu-main {
+		margin: 0;			
+		background-color: #373a3e;
+		.menu-item {
+			background-position: center 35px;
+			background-repeat: no-repeat;
+			padding-top: 1em;
+			height: 83px;
+			width: auto;
+			&:hover, &.current-menu-item {
+				background-color: #000;
+				height: 93px;
+				margin-bottom: -10px;
+			}
+		}
+	}
+
+		.cta-text {
+			margin-top: 80px;
+			float: left;
+			background-color: rgba(66,87,108,.5);
+			color: #FFF;
+			text-align: right;
+			padding: 4px 1em;
+			width: auto;
+			height: 81px;
+			padding-left: 5%;
+			h3 {
+				margin: 0;
+				font-size: 16px;
+				font-weight: 600;
+			}
+			h4 {
+				margin: 0;
+				font-size: 14px;
+				font-weight: 400;
+			}
+		}
+		.cta-arrow {
+			margin-top: 80px;
+			float: left;
+			background-image: url(../images/cta-arrow.png);
+			background-position: center right;
+			width: 292px;
+			height: 81px;
+			margin-bottom: 1em;
+			cursor: pointer;
+			font-size: 30px;
+			padding-left: .7em;
+			text-align: left;
+			span {
+				margin-top: 15px;
+				display: inline-block;
+			}
+		}
+}
+
 
 /*********************
 NAVIGATION STYLES
 *********************/
 
 .nav {
+
+	float: right;
+	height: 83px;
 	background: #eee;
 	border: 0;
 
@@ -131,6 +231,7 @@ NAVIGATION STYLES
 	}  /* end current highlighters */
 
 } /* end .nav */
+
 
 /*********************
 SIDEBARS & ASIDES

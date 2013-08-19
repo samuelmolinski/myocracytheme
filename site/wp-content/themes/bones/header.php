@@ -56,15 +56,15 @@
 					</nav>
 				
 					<?php if(is_home()||is_front_page()) { ?>
-					<div class="splash s-full">
+					<div class="splash s-full clearfix">
 						<div class="cta-text">
 							<h3>Just because you can vote, doesn’t mean you should.</h3>
 							<h4>The future of your freedom is worth (3) minutes<br />(We hope!)</h4>
 						</div>
-						<div class="cta-arrow"></div>
+						<div class="cta-arrow"><span class="font-white">Get</span> <span class="font-red">Informed</span></div>
 					</div>
 					<?php } else { ?>
-					<div class="splash"></div>
+					<div class="splash clearfix"></div>
 					<?php } ?>
 				</div> <!-- end #inner-header -->
 

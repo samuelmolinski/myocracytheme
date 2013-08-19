@@ -1,1 +1,1 @@
-<?php $abspath = 'C:\\wamp\\www\\myocracytheme\\site/'; ?>
+<?php $abspath = 'C:\\wamp\\www\\Myocracy.org\\site/'; ?>

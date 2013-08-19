@@ -266,30 +266,18 @@ class cunjoshare_BottomTab_controller extends absController
 
     
 
-     public function action_activate()
-
+    public function action_activate()
     {
-
         $success = $this->setting_manager->save_widget_setting(array(
-
                 'layout'            => $this->layout,
-
                 'category'          => "Visibility settings",
-
                 'option_name'       => "is_active",
-
                 'option_value'      => "1",
-
                 'date_added'        => date("Y-m-d"),
-
         ));
 
-        
-
         echo json_encode(array("status" => "success", 'message' => "Widget activated!"));
-
         return;
-
     }
 
     public function action_DisplayBar()
@@ -594,10 +582,6 @@ class cunjoshare_BottomTab_controller extends absController
             $oneimage = $this->cunjito_image();
         
         $anchor = '<a oneimage="'. $oneimage . '" id="cunjo_widget_'.$this->layout.'" cunjo="share" style="font-size:0px; text-decoration:none;display: inherit;" href="http://share.cunjo.com" layout="'. $this->layout .'"';
-
-
-        $anchor = '<a oneimage="'. $oneimage . '" id="cunjo_widget_'.$this->layout.'" cunjo="share" style="font-size:0px; text-decoration:none;display: inherit;" href="http://share.cunjo.com" layout="'. $this->layout .'"';
-
         
 
         if($widget_settings['visibility_settings']['display_icons'] == 0)

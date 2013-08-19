@@ -20,7 +20,29 @@ upon your base.less styles.
 /*********************
 NAVIGATION STYLES
 *********************/
-
+.header{
+	#logo {
+		background-size: auto;
+	}
+	
+	#menu-main {
+		margin: 0;			
+		background-color: #373a3e;
+		.menu-item {
+			background-position: center 0;
+			background-repeat: no-repeat;
+			padding-top: 1em;
+			height: 50px;
+			width: 17%;
+			float: left;
+			&:hover, &.current-menu-item {
+				background-color: #000;
+				height: 55px;
+				margin-bottom: -10px;
+			}
+		}
+	}
+}
 .nav {}
 
 	/* .menu is clearfixed inside mixins.scss */
