@@ -48,6 +48,7 @@ $html .= "<p>" . $introText . "</p>";
 $html .= $userMeta->createInput( 'user_login', 'text', array(
     'value'         => isset($_POST['user_login']) ? esc_attr( stripslashes($_POST['user_login']) ) : '',
     'label'         => isset( $config['input_label'] ) ? $config['input_label'] : __( 'Username or E-mail', $userMeta->name ),
+    'placeholder'   => isset( $config['input_label'] ) ? $config['input_label'] : __( 'Username or E-mail', $userMeta->name ),
     'id'            => !empty( $config['input_id'] ) ? $config['input_id'] : 'user_login' . $uniqueID,
     'class'         => !empty( $config['input_class'] ) ? $config['input_class'] : 'um_lostpass_field um_input',
     'label_class'   => !empty( $config['input_label_class'] ) ? $config['input_label_class'] : 'pf_label',

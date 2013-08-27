@@ -41,11 +41,11 @@
 			
 				<div id="inner-header" class="wrap clearfix">
 					<div class="preheader">
-						<div class="login-register"><span class="login">Login</span> or <span class="register">Register</span></div>
+						<div class="login-register"><a href="<?php echo home_url(); ?>/login/" class="login">Login</a> or <a href="<?php echo home_url(); ?>/registration-choice/" class="register">Register</a></div>
 					</div>
 
 					<!-- to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> -->
-					<div id="logo"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></div>
+					<a href="<?php echo home_url(); ?>" rel="nofollow"><div id="logo"><?php bloginfo('name'); ?></div></a>
 					
 					<!-- if you'd like to use the site description you can un-comment it below -->
 					<?php // bloginfo('description'); ?>

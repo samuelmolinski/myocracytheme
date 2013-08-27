@@ -28,6 +28,7 @@ and will be used across all viewports.
 ******************************************************************/
 
 
+@import "_mixins.less";
 
 
 /*********************
@@ -124,7 +125,7 @@ a, a:visited {
 }
 
 /******************************************************************
-05. H1, H2, H3, H4, H5 STYLES
+05. H1, H2, H3, H4, H5, GENERAL TEXT STYLES
 ******************************************************************/
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
@@ -171,6 +172,26 @@ h5, .h5 {
 .uppercase {
 	text-transform: uppercase;
 }
+.my_red {color: #d60000;}
+
+ul.triangle {
+    margin: 0.75em 0;
+    padding: 0 1em;
+    list-style: none !important;
+    li:before { 
+	    content: "";
+	    border-color: transparent #9e1822;
+	    border-style: solid;
+	    border-width: 0.35em 0 0.35em 0.45em;
+	    display: block;
+	    height: 0;
+	    width: 0;
+	    left: -1em;
+	    top: 0.9em;
+	    position: relative;
+	}
+}
+
 /*********************
 06. HEADER SYTLES
 *********************/
@@ -190,7 +211,14 @@ h5, .h5 {
 		color: #fff;
 		text-align: right;
 	}
+		.login {
+			text-decoration: none;
+			text-transform: uppercase;
+			color: #fff;
+		}
 		.register {
+			text-decoration: none;
+			text-transform: uppercase;
 			color: #ec2432;
 		}
 
@@ -411,7 +439,7 @@ and more scalable.
 08. POSTS & CONTENT STYLES
 *********************/
 
-#content
+#content {
 	#inner-content {
 		padding-top: 2.2em;
 		padding-left: 1.5em;
@@ -430,8 +458,24 @@ and more scalable.
 	}
 	.matte {
 		background-color: #fff;
+		padding: 0px 5% 1em;
+	}
+	.matte-06 {
+		background-color: rgba(0,0,0,.06);
 		padding: 1px 5% 1em;
 	}
+	.my-ppl {
+		background-image: url(../images/bg-myocracy-ppl.png);
+		background-position: right 235px;
+		background-repeat: no-repeat;
+	}
+}
+.fullwidth {
+	width: 100%;
+	max-width: 100%;
+}
+.top0 {
+	margin-top: 0;
 }
 
 		.hentry {
@@ -1240,6 +1284,11 @@ and more scalable.
 	.linklove {display: none;}
 }
 
+
+/*********************
+Plugin Zillian Styles
+*********************/
+
 .zilla-button {
 	&.last {
 		margin-bottom: 0 !important;
@@ -1276,4 +1325,50 @@ and more scalable.
 .zilla-toggle-inner {
 	border: none;
 	padding: 10px 0 0 50px;
+}
+a.zilla-button.btn-joinus {
+	background: #a0abb5 !important;
+	border: solid 1px #727b84 !important;
+	border-radius: 0px !important;
+	font-size: 25px;
+	line-height: 35px;
+	font-family: @sans-serif;
+	font-weight: 600;
+	padding: 7px 1em !important;
+	margin: .5em !important;
+}
+a.zilla-button.btn-register {
+	background: #a0abb5 !important;
+	border: solid 1px #727b84 !important;
+	border-radius: 0px !important;
+	font-size: 15px;
+	line-height: 35px;
+	font-family: @sans-serif;
+	font-weight: 600;
+	padding: 5px .7em !important;
+	margin: .5em !important;
+	float: right;
+	display: inline-block;
+}
+.aligncenter {
+	text-align: center;
+}
+.um_login_form, .um_lostpass_form {
+	font-family: @sans-serif;
+	.pf_label {
+		display: none;
+	}
+	input[type=text], input[type=password] {
+		width: 100%;
+		max-width: 100%;
+		padding: 7px 1em;
+		line-height: 25px;
+		font-size: 13px;
+	}
+	input[type=submit] {
+		background-color: #9e1822;
+		padding: 6px 1em;
+		border: solid 1px #1e2329;
+		color: #fff;
+	}
 }

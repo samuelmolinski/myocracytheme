@@ -17,6 +17,7 @@ $html = "<form id=\"$formID\" class=\"$formClass\" method=\"post\" $onSubmit >";
 $html .= $userMeta->createInput( 'user_login', 'text', array(
     'value'         => isset( $_REQUEST['user_login'] ) ? stripslashes( $_REQUEST['user_login'] ) : '',
     'label'         => !empty( $config['login_label'] ) ? $config['login_label'] : $loginTitle,
+    'placeholder'   => !empty( $config['login_label'] ) ? $config['login_label'] : $loginTitle,
     'id'            => !empty( $config['login_id'] ) ? $config['login_id'] : 'user_login' . $uniqueID,
     'class'         => !empty( $config['login_class'] ) ? $config['login_class'] : 'um_login_field um_input',
     'label_class'   => !empty( $config['login_label_class'] ) ? $config['login_label_class'] : 'pf_label',
@@ -25,6 +26,7 @@ $html .= $userMeta->createInput( 'user_login', 'text', array(
 
 $html .= $userMeta->createInput( 'user_pass', 'password', array(
     'label'         => !empty( $config['pass_label'] ) ? $config['pass_label'] : __( 'Password', $userMeta->name ), 
+    'placeholder'   => !empty( $config['pass_label'] ) ? $config['pass_label'] : __( 'Password', $userMeta->name ), 
     'id'            => !empty( $config['pass_id'] ) ? $config['pass_id'] : 'user_pass' . $uniqueID,
     'class'         => !empty( $config['pass_class'] ) ? $config['pass_class'] : 'um_pass_field um_input',
     'label_class'   => !empty( $config['pass_label_class'] ) ? $config['pass_label_class'] : 'pf_label',
