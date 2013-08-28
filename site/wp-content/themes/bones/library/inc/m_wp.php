@@ -1,9 +1,9 @@
 <?php
 	//Metabox based path
-	//define('METAPATH', TOOLPATH . 'inc/wp/metaboxes/');	
-	//include (METAPATH .'MediaAccess.php'); //Custom Meta Data Class
-	//include (METAPATH .'MetaBox.php'); //Custom Meta Data Class
-	//include (METAPATH .'metaSetup.php'); //Setup Custom Meta Data 
+	define('M_METAPATH', M_TOOLPATH . 'inc/wp/metaboxes/');	
+	include (M_METAPATH .'MediaAccess.php'); //Custom Meta Data Class
+	include (M_METAPATH .'MetaBox.php'); //Custom Meta Data Class
+	include (M_METAPATH .'metaSetup.php'); //Setup Custom Meta Data 
 	
 	include_once ('wp/m_post.php');
 	include_once ('wp/m_image.php');

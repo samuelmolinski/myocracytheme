@@ -180,3 +180,4 @@ function remove_bad_pbr_tags($content) {
     $content = preg_replace($pattern, $replacement, $content);
     return $content;
 }*/
+
