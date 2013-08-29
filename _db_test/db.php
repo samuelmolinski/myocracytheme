@@ -49,7 +49,7 @@
 	//d($results);
 
 	$users = array();
-
+/*
 	foreach($results as $key => $entry)  {
 		foreach ($entry as $propertyname => $property) {
 			$users[$entry['id']][$propertyname] = $property;
@@ -160,4 +160,4 @@
 			add_user_meta( $user_id, 'candidate_information', $user['Candidate Information']);
 		}
 		//d($user_id);
-	}
+	}*/

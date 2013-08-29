@@ -222,7 +222,7 @@
 	
 function get_customTerms($taxonomies = 'category') {
 	global $wpdb;
-	$query = "SELECT t.*, tt.* FROM wp_terms AS t INNER JOIN wp_term_taxonomy AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('$taxonomies') ORDER BY t.name ASC";
+	$query = "SELECT t.*, tt.* FROM ".$GLOBALS['table_prefix']."terms AS t INNER JOIN ".$GLOBALS['table_prefix']."term_taxonomy AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('$taxonomies') ORDER BY t.name ASC";
 
 	$terms = $wpdb->get_results($query);
 	return $terms;

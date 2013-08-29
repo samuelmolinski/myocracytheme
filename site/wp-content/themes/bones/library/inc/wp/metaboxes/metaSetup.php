@@ -5,11 +5,12 @@ require_once('MediaAccess.php');
 
 // global styles for the meta boxes
 if (is_admin()) wp_enqueue_style('wpalchemy-metabox', get_stylesheet_directory_uri() . '/library/css/metaboxes.css');
+if (is_admin()) wp_enqueue_script('wpalchemy-metabox', get_stylesheet_directory_uri() . '/library/js/metaboxes.js');
 
 $mb_candidate_search = new WPAlchemy_MetaBox(array
 (
 	'id' => 'candidate-search-customMeta',
-	'title' => 'Candidate Search Questions',
+	'title' => 'Candidate Search Slides',
 	'types' => array('page'), // added only for pages and to custom post type "events"
 	'context' => 'normal', // same as above, defaults to "normal"
 	'priority' => 'high', // same as above, defaults to "high"

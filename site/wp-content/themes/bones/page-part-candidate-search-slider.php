@@ -15,24 +15,46 @@
 		<li class="slide">
 			<h3 class="slide-title"><?php echo $slide['title'] ?></h3>
 			<div class="slide-content"><?php echo $slide['content'] ?></div>
+			<div class="slide-controls">
+				<a href="#" class="btn btn-slider-back"><?php echo $slide['btn-back'] ?></a>
+				<a href="#" class="btn btn-slider-next"><?php echo $slide['btn-next'] ?></a>
+			</div>
 		</li>
 		<?php
 		} else if($slide['slideType']=='choice') { ?>
 		<li class="slide">
 			<h3 class="slide-title"><?php echo $slide['title'] ?></h3>
 			<div class="slide-content"><?php echo $slide['content'] ?></div>
+			<div class="slide-controls">
+				<a href="#" class="btn btn-slider-back"><?php echo $slide['btn-back'] ?></a>
+				<a href="#" class="btn btn-slider-agree"><?php echo $slide['btn-agree'] ?></a>
+				<a href="#" class="btn btn-slider-disagree"><?php echo $slide['btn-disagree'] ?></a>
+				<a href="#" class="btn btn-slider-next"><?php echo $slide['btn-skip'] ?></a>
+			</div>
 		</li>
 		<?php
 		} else if($slide['slideType']=='process') { ?>
 		<li class="slide">
 			<h3 class="slide-title"><?php echo $slide['title'] ?></h3>
 			<div class="slide-content"><?php echo $slide['content'] ?></div>
+			<div class="slide-controls">
+				<a href="#" class="btn btn-slider-back"><?php echo $slide['btn-back'] ?></a>
+				<a href="#" class="btn btn-slider-process"><?php echo $slide['btn-process'] ?></a>
+			</div>
 		</li>
 		<?php
 		} else if($slide['slideType']=='result') { ?>
 		<li class="slide">
 			<h3 class="slide-title"><?php echo $slide['title'] ?></h3>
-			<div class="slide-content"><?php echo $slide['content'] ?></div>
+			<div class="slide-content">
+				<?php echo $slide['content'] ?>
+				<div class="mediaShare"></div>
+			</div>
+			<div class="saveResults"></div>
+			<div class="slide-controls">
+				<a href="#" class="btn btn-slider-restart"><?php echo $slide['btn-restart'] ?></a>
+			</div>
+
 		</li>
 		<?php
 		}
