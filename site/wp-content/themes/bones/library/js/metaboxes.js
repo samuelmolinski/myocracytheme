@@ -5,6 +5,7 @@ if(!window.log) {window.log = function() {log.history = log.history || [];log.hi
 		log("Metabox");
 
 		$(".slideType input[type=radio]").change(function() {
+			/*var slide = $(this).
 			var value = $(this).val();
 			log(value);
 
@@ -16,7 +17,7 @@ if(!window.log) {window.log = function() {log.history = log.history || [];log.hi
 				toggleStatement(false);
 			} else if() {
 				toggleStatement(false);
-			} 		
+			} */
 		});
 
 		function toggleStatement(force){

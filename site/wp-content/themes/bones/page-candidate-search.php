@@ -19,14 +19,16 @@ Template Name: Candidate Search
 						    <header class="article-header">
 							
 							    <h1 class="page-title"><?php the_title(); ?></h1>
-                  <p class="byline vcard"><?php
-                    printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span>.', 'bonestheme'), get_the_time('Y-m-j'), get_the_time(__('F jS, Y', 'bonestheme')), bones_get_the_author_posts_link());
-                  ?></p>
+				                  <p class="byline vcard"><?php
+				                    printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span>.', 'bonestheme'), get_the_time('Y-m-j'), get_the_time(__('F jS, Y', 'bonestheme')), bones_get_the_author_posts_link());
+				                  ?></p>
 
 						
 						    </header> <!-- end article header -->
-
-						    <?php include('page-part-candidate-search-slider.php'); ?>
+						    <div id="candidate-slider">
+						    	<?php include('page-part-candidate-search-slider.php'); ?>
+						    </div>
+						    
 					
 						    <section class="entry-content">
 							    <?php the_content(); ?>

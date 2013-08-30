@@ -60,27 +60,27 @@
     <span class="h3">Labels</span> 
     <label>Button - Next:</label>
     <?php $mb->the_field('btn-next'); ?>
-    <p><input type="text" name="<?php $mb->the_name(); ?>" <?php echo $mb->get_the_value()? $mb->get_the_value(): 'value="Next"'; ?> /></p>
+    <p><input type="text" name="<?php $mb->the_name(); ?>" value="<?php echo $mb->get_the_value()? $mb->get_the_value(): 'Next'; ?>" /></p>
 
     <label>Button - Previous:</label>
     <?php $mb->the_field('btn-back'); ?>
-    <p><input type="text" name="<?php $mb->the_name(); ?>" <?php echo $mb->get_the_value()? $mb->get_the_value(): 'value="Back"'; ?> /></p>
+    <p><input type="text" name="<?php $mb->the_name(); ?>" value="<?php echo $mb->get_the_value()? $mb->get_the_value(): 'Back'; ?>" /></p>
 
     <label>Button - Confirm:</label>
     <?php $mb->the_field('btn-agree'); ?>
-    <p><input type="text" name="<?php $mb->the_name(); ?>" <?php echo $mb->get_the_value() ? $mb->get_the_value(): 'value="Agree"'; ?> /></p>
+    <p><input type="text" name="<?php $mb->the_name(); ?>" value="<?php echo $mb->get_the_value() ? $mb->get_the_value(): 'Agree'; ?>" /></p>
 
     <label>Button - Reject:</label>
     <?php $mb->the_field('btn-disagree'); ?>
-    <p><input type="text" name="<?php $mb->the_name(); ?>" <?php echo $mb->get_the_value() ? $mb->get_the_value(): 'value="Disagree"'; ?> /></p>
+    <p><input type="text" name="<?php $mb->the_name(); ?>" value="<?php echo $mb->get_the_value() ? $mb->get_the_value(): 'Disagree'; ?>" /></p>
 
     <label>Button - Process:</label>
     <?php $mb->the_field('btn-process'); ?>
-    <p><input type="text" name="<?php $mb->the_name(); ?>" <?php echo $mb->get_the_value() ? $mb->get_the_value(): 'value="Results"'; ?> /></p>
+    <p><input type="text" name="<?php $mb->the_name(); ?>" value="<?php echo $mb->get_the_value() ? $mb->get_the_value(): 'Results'; ?>" /></p>
 
     <label>Button - Skip:</label>
     <?php $mb->the_field('btn-skip'); ?>
-    <p><input type="text" name="<?php $mb->the_name(); ?>" <?php echo $mb->get_the_value() ? $mb->get_the_value(): 'value="Skip this question"'; ?> /></p>
+    <p><input type="text" name="<?php $mb->the_name(); ?>" value="<?php echo $mb->get_the_value() ? $mb->get_the_value(): 'Skip this question'; ?>" /></p>
 
     <br/><a href="#" class="dodelete button">Remove Slide</a>
 <?php $mb->the_group_close(); ?>
