@@ -1374,12 +1374,15 @@ a.zilla-button.btn-register {
 }
 
 #candidate-slider {
+	position: relative;
+	overflow: hidden;
 	.flexslider {
 		background-color: #373a3e;
 		color: #fff;
-		margin: 0 0 1em;
+		margin: 0;
 		padding-bottom: 40px;
 		clear: both;
+		border-top: 1px solid #888;
 	}
 	.slide {		
 		&.lvl-1 {
@@ -1461,8 +1464,139 @@ a.zilla-button.btn-register {
 		clear: both;
 		width: 204px;
 	}
+	.btn-submit {
+		background-color: #9e1822;
+		float: right;
+		width: 140px;
+	}
 }
 .advanceSearch {	
-		background-color: #373a3e;
-		color: #fff;
+	background-color: #373a3e;
+	color: #fff;
+	padding: .75em .75em 40px;
+	.slide-content {
+		input, select {
+			width: 100%;
+			max-width: 100%;
+		}
+		.fmInput {
+			width: 100% !important;
+			max-width: 100% !important;
+		}
+	}
+
+	.slide-title {
+		font-size: 20px;
+		margin: .5em 0;
+		padding-right: 10%;
+		padding-left: 10%;
+	}
+	.slide-content {
+		padding-right: 10%;
+		padding-left: 10%;
+	}
 }
+
+.gotoSearch{
+	display: block;
+	float: right;
+	padding: .5em 1em;
+	color: @my-grey;
+	background-color: #000;
+	font-weight: 600;
+	cursor: pointer;
+
+	.counterclockwise {		
+		line-height: 0;
+		font-size: 45px;
+		font-family: "EntypoRegular";
+		display:inline-block;
+		text-decoration: none;
+		vertical-align: 17px;
+		&:hover {
+			color: #fff;
+		}
+	}
+	&:hover {
+		color: #fff;
+	}
+}
+
+/*
+	NiceIt
+*/
+.fmSelect {
+	color: #333;
+	line-height: 40%;
+}
+
+#candidates {
+	position: relative;
+	.candidate {
+		padding:5%;
+		margin-bottom: 5%;
+		position: relative;
+
+		.cand-image {
+			margin: 0;
+			padding: 0;
+			display: block;
+		}
+	}
+	.flexslider {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		z-index: 1000;
+	}
+}
+		
+		.cand-info {
+			font-size: 13px;
+			position: static !important;
+			padding-bottom: 33px;
+			.title {
+				margin: 5.em 0;
+				color: @my-red;
+			}
+			.party {
+				font-weight: 600;
+				font-style: italic;
+			}
+			.position {
+			}
+			.location {
+				font-weight: 600;
+			}			
+			.share-icon {
+				line-height: 33px;
+				font-size: 45px;
+			}
+			.share {
+				text-align: right;
+				position: absolute;
+				width: 200px;
+				bottom: 5%;
+				right: 2%;
+			}
+			.donate {
+				line-height: 32px;
+				display: inline-block;
+				border-radius: 16px;
+				background-color: #9e1822;
+				color: #fff;
+				padding: 0 1em;
+				vertical-align: top;
+				text-decoration: none;
+				font-weight: 600px
+			}
+		}		
+			.share-icon {
+				font-family: "SocialicoRegular";
+				display:inline-block;
+				color: @my-grey;
+				text-decoration: none;
+				&:hover {
+					color: @my-red;
+				}
+			}

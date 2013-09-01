@@ -19,6 +19,7 @@
 	 */
 	//useful for the confige file
 	include ('inc/generic/m_uri.php'); // URI manipulation
+	include ('inc/generic/m_pagination.php'); // URI manipulation
 	include ('inc/generic/m_css.php'); // css functions (valid selector name etc)
 	include ('inc/generic/m_super_dump.php'); // general purpose custom debug functions
 	include ('inc/generic/m_xml.php'); // load/parse xml 

@@ -68,6 +68,10 @@ jQuery(document).ready(function($) {
     
 	
 	// add all your scripts here
+    resizeQueue();
+    $(window).resize(function() {
+      resizeQueue();
+    });
 	
  
 }); /* end of as page load scripts */
@@ -107,3 +111,9 @@ jQuery(document).ready(function($) {
 	w.addEventListener( "orientationchange", restoreZoom, false );
 	w.addEventListener( "devicemotion", checkTilt, false );
 })( this );
+
+function resizeQueue() {
+        var cf_height = jQuery('#candidate-slider .flexslider').height();
+        var ca_height = jQuery('#candidate-slider .advanceSearch').height();
+        jQuery('#candidate-slider .advanceSearch').height(cf_height);
+}

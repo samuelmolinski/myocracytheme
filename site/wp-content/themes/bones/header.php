@@ -61,7 +61,7 @@
 							<h3>Just because you can vote, doesn’t mean you should.</h3>
 							<h4>The future of your freedom is worth (3) minutes<br />(We hope!)</h4>
 						</div>
-						<div class="cta-arrow"><span class="font-white">Get</span> <span class="font-red">Informed</span></div>
+						<a class="cta-arrow" href="<?php echo home_url(); ?>/issues-candidates/"><span class="font-white">Get</span> <span class="font-red">Informed</span></a>
 					</div>
 					<?php } else { ?>
 					<div class="splash clearfix"></div>

@@ -96,7 +96,7 @@ $cat = array(
   "Civil Rights"=> 30, 
   "Criminal Justice"=> 31,
   "Economy"=> 32,
-  "Education"=> 8,
+  "Education"=> 9,
   "Energy"=> 33,
   "Immigration"=> 34
   );
@@ -105,7 +105,7 @@ $sample = array('id' => '13','title' => 'Support voting rights for felons','name
 
 /**************************************/
 // import as custom post "issues_type"
-include('../site/wp-load.php');
+include('../wp-load.php');
 
 global $wpdb;
 
