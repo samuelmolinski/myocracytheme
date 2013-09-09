@@ -346,6 +346,11 @@ class umSupportArray {
                 'title'         => __( 'HTML', $userMeta->name ),
                 'field_group'   => 'formatting',  
                 'is_free'       => false,
+            ),                                                                        
+            'repeating' => array(
+                'title'         => __( 'Repeating', $userMeta->name ),
+                'field_group'   => 'formatting',  
+                'is_free'       => false,
             ),                                     
             'captcha' => array(
                 'title'         => __( 'Captcha', $userMeta->name ),
