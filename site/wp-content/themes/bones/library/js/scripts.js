@@ -163,5 +163,10 @@ function initRepeatFields(){
         element = inputsVals[i];
         jQuery(".repeatingField").append('<div class="um_field_container" class="repeate-me"><input type="text" name="youtube_name" id="youtube-'+i+'" class="um_field um_input repeat-input" label_id="youtube-'+i+'" value="'+element+'"></div>');
     }
-
+/*
+<div class="repeatingField">
+<div class="um_field_container "  class="repeate-me"><label id="" class="um_label_top" for="youtube-0">YouTube URL</label></div>
+</div>
+<input type="button" name="add" value="Add" id="btn-repeat">
+*/
 }
