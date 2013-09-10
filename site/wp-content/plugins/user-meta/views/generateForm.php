@@ -22,7 +22,7 @@ if( empty( $form['fields'] ) )
 if( !is_array( $form['fields'] ) )
     return $html = $userMeta->ShowError( __( 'Fields were saved incorrectly.', $userMeta->name ) );
 
-d($form);
+//d($form);
 $fields = $form['fields'];
 if( empty( $userID ) )
     $userID = null;

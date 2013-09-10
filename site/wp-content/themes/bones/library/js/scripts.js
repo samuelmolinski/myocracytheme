@@ -72,8 +72,22 @@ jQuery(document).ready(function($) {
     $(window).resize(function() {
       resizeQueue();
     });
-	
- 
+
+    $("#btn-repeat").click(function(){
+        log("click");
+    	var num = $(".repeatingField .um_field_container").length;
+        $(".repeatingField").append('<div class="um_field_container" class="repeate-me"><input type="text" name="youtube_name" id="youtube-'+num+'" class="um_field um_input repeat-input" label_id="youtube-'+num+'"></div>');
+        log("append");
+
+        $(".repeatingField .repeat-input").off().change(function(){
+            sumRepeating();
+            log('change');
+        }).blur(function(){log('blur');sumRepeating();});
+
+        return false;
+    });
+    initRepeatFields();
+
 }); /* end of as page load scripts */
 
 
@@ -116,4 +130,38 @@ function resizeQueue() {
         var cf_height = jQuery('#candidate-slider .flexslider').height();
         var ca_height = jQuery('#candidate-slider .advanceSearch').height();
         jQuery('#candidate-slider .advanceSearch').height(cf_height);
+}
+
+function sumRepeating() {
+    var inputs = jQuery(".repeatingField .repeat-input");
+    var arr = [];
+    log(inputs);
+    inputs.each(function(){
+        log(this.value);
+        if((this.value !=null)&&(this.value !="")){
+            arr.push(this.value);
+        }
+        
+    });
+    log(arr);
+    jQuery("input[name=youtube]").val(JSON.stringify(arr));
+}
+function initRepeatFields(){
+
+    jQuery(".repeatingField .repeat-input").off().change(function(){
+        sumRepeating();
+        log('change');
+    }).blur(function(){log('blur');sumRepeating();});
+
+    var v = jQuery("input[name=youtube]").val();
+    log(v);
+    var inputsVals = JSON.parse(v);
+    log("inputsVals", inputsVals);
+    var length = inputsVals.length,
+    element = null;
+    for (var i = 0; i < length; i++) {
+        element = inputsVals[i];
+        jQuery(".repeatingField").append('<div class="um_field_container" class="repeate-me"><input type="text" name="youtube_name" id="youtube-'+i+'" class="um_field um_input repeat-input" label_id="youtube-'+i+'" value="'+element+'"></div>');
+    }
+
 }
