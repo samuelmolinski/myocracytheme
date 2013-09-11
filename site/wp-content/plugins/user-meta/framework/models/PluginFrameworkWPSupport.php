@@ -156,7 +156,7 @@ class PluginFrameworkWPSupport {
      * @param int $userID: if not set, user will registered else user update
      */
     function insertUser( $data, $userID=null ){
-        global $pluginFramework, $pfInstance, $wpdb;
+        global $pluginFramework, $pfInstance, $wpdb, $user_ID;
         $errors = new WP_Error();
         
         // Determine Fields
@@ -167,10 +167,51 @@ class PluginFrameworkWPSupport {
             $key = is_string($key) ? trim($key) : $key;
             $val = is_string($val) ? trim($val) : $val;
             if( !$key ) continue;
-            if( isset($wpField[$key]) )
+            if( isset($wpField[$key]) ) {
                 $userdata[$key] = $val;
-            else
-                $metadata[$key] = $val;
+            } else {
+                d($key);
+                if($key == 'youtube') {
+                    //get post meta
+                    d($wpdb->usermeta);
+                    $post_youtube_meta = $wpdb->get_row("SELECT * FROM $wpdb->usermeta WHERE meta_key = 'youtube' AND user_id ='" . $user_ID . "'", 'ARRAY_A');
+                    d($post_youtube_meta);
+                    //$al = str_replace('\\', '', $val);
+                    $al = stripslashes($val);
+                    //d($al); 
+                    $v = json_decode($al);
+                    //d($v);
+                    foreach ($v->youtube as $key => $video) {
+                        if($video->pid != null) {                            
+                            $post_exists = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE id = '" . $video->pid . "'", 'ARRAY_A');
+                            //d($post_exists);
+                        }
+                        if(@$post_exists){
+                            $existing_post = array(
+                            'post_title' => $video->title,
+                            'post_content' => '',
+                            );
+                            $post_id = wp_update_post($existing_post);
+                        } else {
+                            $new_post = array(
+                            'post_title' => $video->title,
+                            'post_content' => '',
+                            'post_status' => 'pending',
+                            'post_date' => date('Y-m-d H:i:s'),
+                            'post_author' => $user_ID,
+                            'post_type' => 'video_type',
+                            );
+                            $post_id = wp_insert_post($new_post);
+                            d($post_id);
+                            $v->youtube[$key]->pid = $post_id;
+                        }
+                    }
+                    //d($v);
+                    $metadata['youtube'] = addslashes(json_encode($v));
+                } else {
+                    $metadata[$key] = $val;
+                }                
+            }                
         }
         
         // sanitize email and user
@@ -236,6 +277,9 @@ class PluginFrameworkWPSupport {
         return array_merge( $userdata, $metadata );                            
     }
     
+    function addVideo(){
+
+    }
           
     /**
      * Non-ajax file upload
@@ -244,7 +288,7 @@ class PluginFrameworkWPSupport {
      * @param array | string $extensions array('jpg','png','gif') | jpg,png,gif
      * @param int $maxSize 1048576 (in Byte 2MB default)
      * @param boolean $replaceOldFile False
-     * @return WP_Error|string 
+     * @return WP_Error|string
      */
     function fileUpload( $fieldName, $extensions=array('jpg','png','gif'), $maxSize=1048576, $replaceOldFile=false ){    
         global $pfInstance;
