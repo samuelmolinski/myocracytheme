@@ -7,5 +7,5 @@
 	
 	include_once ('wp/m_post.php');
 	include_once ('wp/m_image.php');
-	//include_once ('wp/m_metabox.php'); //additional WP Alchemy functions
+	include_once ('wp/m_metabox.php'); //additional WP Alchemy functions
 ?>

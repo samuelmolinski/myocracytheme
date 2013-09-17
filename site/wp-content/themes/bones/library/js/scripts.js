@@ -74,15 +74,8 @@ jQuery(document).ready(function($) {
     });
 
     $("#btn-repeat").click(function(){
-        log("click");
-    	var num = $(".repeatingField .um_field_container").length;
-        $(".repeatingField").append('<div class="um_field_container" class="repeate-me"><input type="text" name="youtube_name" id="youtube-'+num+'" class="um_field um_input repeat-input" label_id="youtube-'+num+'"></div>');
-        log("append");
 
-        $(".repeatingField .repeat-input").off().change(function(){
-            sumRepeating();
-            log('change');
-        }).blur(function(){log('blur');sumRepeating();});
+        addAction(this);
 
         return false;
     });
@@ -127,46 +120,130 @@ jQuery(document).ready(function($) {
 })( this );
 
 function resizeQueue() {
-        var cf_height = jQuery('#candidate-slider .flexslider').height();
-        var ca_height = jQuery('#candidate-slider .advanceSearch').height();
-        jQuery('#candidate-slider .advanceSearch').height(cf_height);
+    var cf_height = jQuery('#candidate-slider .flexslider').height();
+    var ca_height = jQuery('#candidate-slider .advanceSearch').height();
+    jQuery('#candidate-slider .advanceSearch').height(cf_height);
 }
 
 function sumRepeating() {
-    var inputs = jQuery(".repeatingField .repeat-input");
-    var arr = [];
-    log(inputs);
-    inputs.each(function(){
-        log(this.value);
-        if((this.value !=null)&&(this.value !="")){
-            arr.push(this.value);
-        }
-        
-    });
-    log(arr);
-    jQuery("input[name=youtube]").val(JSON.stringify(arr));
-}
-function initRepeatFields(){
+    var entries = jQuery(".um_field_container.repeate-me");
+    var allfields = [];
+        log("entries",entries);
+    jQuery(entries).each(function(){ 
+        log("this",this);
+        var arr = [];     
+        inputs = jQuery(this).find(".repeat-input");  
+        var item = '{';
+        inputs.each(function(){
 
+            log("this.value",this.value);
+            log("this.name",this.name);
+            if((this.value !=null)&&(this.value !="")){
+                if(item != '{'){
+                    item += ',';
+                }
+                item += '"'+this.name+'" : "'+this.value+'"';
+                log(item);
+            }        
+        });
+                item += '}';
+                item = JSON.parse(item);
+            log("item",item);
+        allfields.push(item);
+        log("allfields",allfields);
+    });
+    jQuery("input[name=youtube]").val(JSON.stringify(allfields));
+}
+
+function addAction(){
+    log("click");
+    var num = jQuery(".repeatingField .um_field_container").length;
+    jQuery(".repeatingField").append(getNewField(num , '', '', ''));
+    log("append");
     jQuery(".repeatingField .repeat-input").off().change(function(){
         sumRepeating();
         log('change');
     }).blur(function(){log('blur');sumRepeating();});
 
+    jQuery(".repeatingField input.btn-remove-video").off().click(function(){
+        removeAction(this)
+    });
+}
+
+function removeAction(youtubeItem) {    
+    log('removeAction start ---');
+    var Rfield = jQuery(youtubeItem).parent();
+    log('Rfield',Rfield);
+    var youtude_pid = jQuery(youtubeItem).find(".youtube-pid").val();
+    var toRemoveField = jQuery("input[name=youtube_remove]").val();
+    
+    log('toRemove',toRemoveField);
+
+    if((toRemoveField==null)||(toRemoveField=='')||(toRemoveField==undefined)){
+        toRemove = [];
+        toRemove.push(youtude_pid);
+    } else {
+        toRemove = JSON.parse(toRemoveField);
+        log("toRemoveField", toRemoveField);
+        toRemove.push(youtude_pid);
+    }
+
+    jQuery("input[name=youtube_remove]").val(JSON.stringify(toRemove));
+    Rfield.remove();
+    sumRepeating();
+    if(jQuery('.repeate-me').length ==0) {
+        addAction();
+    }
+    log('removeAction end ----');
+}
+
+function initRepeatFields(){
+    log('initRepeatFields');
+
     var v = jQuery("input[name=youtube]").val();
-    log(v);
-    var inputsVals = JSON.parse(v);
-    log("inputsVals", inputsVals);
-    var length = inputsVals.length,
-    element = null;
+    //log("v",v);
+    if(v != ""){
+        var inputsVals = JSON.parse(v);
+        //log("inputsVals", inputsVals);
+        var length = inputsVals.length,
+        element = null;
+    } else {
+        length = 0;
+        i=0;
+    }
+    
     for (var i = 0; i < length; i++) {
         element = inputsVals[i];
-        jQuery(".repeatingField").append('<div class="um_field_container" class="repeate-me"><input type="text" name="youtube_name" id="youtube-'+i+'" class="um_field um_input repeat-input" label_id="youtube-'+i+'" value="'+element+'"></div>');
+        log("element", element);
+        jQuery(".repeatingField").append(getNewField(i, element.name, element.url, element.pid));
     }
-/*
-<div class="repeatingField">
-<div class="um_field_container "  class="repeate-me"><label id="" class="um_label_top" for="youtube-0">YouTube URL</label></div>
-</div>
-<input type="button" name="add" value="Add" id="btn-repeat">
-*/
+
+    i++;
+    jQuery(".repeatingField").append( getNewField(i, '', '', ''));
+
+    // Event handlers after we create the items
+    jQuery(".repeatingField .repeat-input").off().change(function(){
+        sumRepeating();
+        log('change');
+    }).blur(function(){log('blur');sumRepeating();});
+
+
+    jQuery(".repeatingField input.btn-remove-video").off().click(function(){
+        removeAction(this);
+    });
+}
+
+function getNewField(i, title, url, pid){
+    var pid = pid ? pid : '';
+    return [
+        '<div class="um_field_container repeate-me" >',
+        '<label class="um_label_top" for="youtube-t-'+i+'t">YouTube Title</label>',
+        '<input type="text" name="name" id="youtube-t-'+i+'" class="um_field um_input repeat-input" label_id="youtube-t-'+i+'" value="'+title+'">',
+        '<br/>',
+        '<label class="um_label_top" for="youtube-u-'+i+'">YouTube URL</label>',
+        '<input type="text" name="url" id="youtube-u-'+i+'" class="um_field um_input repeat-input" label_id="youtube-u-'+i+'" value="'+url+'">',
+        '<input value="Remove" type="button" class="btn btn-remove-video" />',
+        '<input class="youtube-pid" name="pid" value="'+pid+'" type="hidden" />',
+        '</div>'
+    ].join('');
 }

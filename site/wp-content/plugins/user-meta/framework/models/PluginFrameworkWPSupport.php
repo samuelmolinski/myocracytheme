@@ -170,45 +170,75 @@ class PluginFrameworkWPSupport {
             if( isset($wpField[$key]) ) {
                 $userdata[$key] = $val;
             } else {
-                d($key);
+                //d($key);
                 if($key == 'youtube') {
                     //get post meta
-                    d($wpdb->usermeta);
+                    //d($wpdb->usermeta);
                     $post_youtube_meta = $wpdb->get_row("SELECT * FROM $wpdb->usermeta WHERE meta_key = 'youtube' AND user_id ='" . $user_ID . "'", 'ARRAY_A');
-                    d($post_youtube_meta);
+                    //d($post_youtube_meta);
                     //$al = str_replace('\\', '', $val);
                     $al = stripslashes($val);
                     //d($al); 
                     $v = json_decode($al);
                     //d($v);
-                    foreach ($v->youtube as $key => $video) {
-                        if($video->pid != null) {                            
-                            $post_exists = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE id = '" . $video->pid . "'", 'ARRAY_A');
-                            //d($post_exists);
-                        }
-                        if(@$post_exists){
-                            $existing_post = array(
-                            'post_title' => $video->title,
-                            'post_content' => '',
-                            );
-                            $post_id = wp_update_post($existing_post);
-                        } else {
-                            $new_post = array(
-                            'post_title' => $video->title,
-                            'post_content' => '',
-                            'post_status' => 'pending',
-                            'post_date' => date('Y-m-d H:i:s'),
-                            'post_author' => $user_ID,
-                            'post_type' => 'video_type',
-                            );
-                            $post_id = wp_insert_post($new_post);
-                            d($post_id);
-                            $v->youtube[$key]->pid = $post_id;
+                    if($v) {
+                        foreach ($v as $key => $video) {
+                                //d($video);
+                            if($video->pid != null) {                            
+                                $post_exists = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE id = '" . $video->pid . "'", 'ARRAY_A');
+                                //d($post_exists);
+                            }
+                            if(@$post_exists){
+                                if ($post_exists["post_author"]==$user_id){
+                                    $existing_post = array(
+                                    'post_title' => $video->name,
+                                    'post_content' => $video->url,
+                                    );
+                                    $post_id = wp_update_post($existing_post);
+
+                                    $post_meta = $wpdb->get_row("SELECT * FROM $wpdb->postmeta WHERE post_id = '" . $video->pid . "' AND meta_key = 'video_type_meta'", 'ARRAY_A');
+                                    d($post_meta);
+                                    $update = $wpdb->update($wpdb->postmeta, array('videoURL'=>$video->url), array('post_id'=>$video->pid, 'meta_key'=>'video_type_meta'));
+                                    d($update);
+                                }
+                            } else {
+                                $new_post = array(
+                                'post_title' => $video->name,
+                                //'post_content' => $video->url,
+                                'post_status' => 'pending',
+                                'post_date' => date('Y-m-d H:i:s'),
+                                'post_author' => $user_ID,
+                                'post_type' => 'video_type',
+                                );
+                                $post_id = wp_insert_post($new_post);
+                                //d($post_id);
+                                $v[$key]->pid = $post_id;
+                                //  a:1:{s:8:"videoURL";s:4:"test";}
+                                    $insert = $wpdb->insert($wpdb->postmeta, array('post_id'=>$post_id, 'meta_key'=>'video_type_meta', 'meta_value'=>serialize(array('videoURL'=>$video->url))));
+                                    d($insert);
+                            }
                         }
                     }
                     //d($v);
                     $metadata['youtube'] = addslashes(json_encode($v));
-                } else {
+                } elseif ($key == 'youtube_remove') {
+                    $al = @stripslashes($val);
+                    //d($al); 
+                    $v = @json_decode($al);
+                    d($v);
+                    if($v){
+                        foreach ($v->youtube as $key => $video) {
+                            if($video->pid != null) {                            
+                                $post_exists = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE id = '" . $video->pid . "'", 'ARRAY_A');
+                                //d($post_exists);
+                            }
+                            if(@$post_exists){
+                                wp_delete_post( $video->pid, true );
+                            } 
+                        }
+                    }
+                    
+                }else {
                     $metadata[$key] = $val;
                 }                
             }                

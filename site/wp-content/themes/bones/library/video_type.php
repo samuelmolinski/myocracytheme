@@ -48,7 +48,7 @@ function video_post_example() {
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			/* the next one is important, it tells what's enabled in the post editor */
-			'supports' => array( 'title', 'editor', 'revisions')
+			'supports' => array( 'title', 'editor', 'revisions', 'author')
 	 	) /* end of options */
 	); /* end of register post type */
 	

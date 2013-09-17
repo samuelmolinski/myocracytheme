@@ -373,6 +373,9 @@
 				$('#candidate-slider .flexslider').animate({'bottom':0}, 1000);
 				$(this).addClass("upp");
 			}
+			if(location.hash = "#quickSearch"){
+				$(".gotoSearch").trigger('click');
+			}
 		});
 	});
 })(jQuery,window);

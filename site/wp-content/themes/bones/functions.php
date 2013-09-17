@@ -173,6 +173,15 @@ function bones_wpsearch($form) {
     return $form;
 } // don't remove this bracket!
 
+function videoSearch() {
+    $form = '<form role="search" method="get" id="searchform" action="' . get_permalink() . '" >
+    <input type="hidden" name="post_type" value="events" />
+    <label class="screen-reader-text" for="s">' . __('Search for:', 'bonestheme') . '</label>
+    <input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="'.esc_attr__('Search the videos...','bonestheme').'" />
+    <input type="submit" id="searchsubmit" value="'. esc_attr__('Search') .'" />
+    </form>';
+    return $form;
+}
 /*// REMOVE BAD P and BR TAGS FROM NAME ANCHORS
 add_filter('the_content', 'remove_bad_pbr_tags');
 function remove_bad_pbr_tags($content) {

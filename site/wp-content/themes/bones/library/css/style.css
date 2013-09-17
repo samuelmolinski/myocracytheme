@@ -3259,6 +3259,21 @@ a.zilla-button.btn-register {
 .share-icon:hover {
   color: #9e1822;
 }
+.video_type .share-icon {
+  line-height: 33px;
+  font-size: 45px;
+  color: #888;
+}
+.video_type .youtube_iframe {
+  width: 100%;
+  max-width: 100%;
+  min-height: 300px;
+}
+.mediaSlider youtube_iframe {
+  width: 100%;
+  max-width: 100%;
+  min-height: 400px;
+}
 /*
 LARGER MOBILE DEVICES
 This is for devices like the Galaxy Note or something that's

@@ -17,7 +17,7 @@ function get_featured_posts($post_type = array('post'), $numPost = 3) {
 	foreach ($ps as $p) {		
 		$mb_destaque->the_meta($p->ID);
 		$meta = $mb_destaque->meta;
-		$ef = $mb_destaque->meta['enableFeatured'];
+		$ef = @$mb_destaque->meta['enableFeatured'];
 		//d($ef);
 		if ($ef) {
 			$featured[] = $p->ID;
