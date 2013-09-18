@@ -3269,7 +3269,15 @@ a.zilla-button.btn-register {
   max-width: 100%;
   min-height: 300px;
 }
-.mediaSlider youtube_iframe {
+.flexslider.mediaSlider {
+  box-shadow: none;
+  background-color: #f1f1f1;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+}
+.flexslider.mediaSlider .youtube_iframe {
+  margin: 1%;
   width: 100%;
   max-width: 100%;
   min-height: 400px;
