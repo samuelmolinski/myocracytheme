@@ -1541,9 +1541,38 @@ a.zilla-button.btn-register {
   padding: 0;
   border-radius: 0;
 }
+.flexslider.mediaSlider li.slide {
+  color: #FFF;
+  padding: 1%;
+}
+.flexslider.mediaSlider li.slide h2 {
+  margin: 0 0 3px;
+}
 .flexslider.mediaSlider .youtube_iframe {
-  margin: 1%;
   width: 100%;
   max-width: 100%;
   min-height: 400px;
+  float: left;
+}
+.flexslider.mediaSlider .metabox {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2.5%;
+  float: left;
+}
+.flexslider.mediaSlider .flex-direction-nav {
+  background-color: #fff;
+  display: inline-block;
+  line-height: 40px;
+  text-decoration: none;
+}
+.flexslider.mediaSlider .flex-direction-nav a {
+  background-color: #fff;
+  width: 100px;
+  padding: 0 10px;
+}
+.flexslider.mediaSlider .flex-direction-nav .flex-next {
+  border-radius: 16px 0px 0px 16px;
+}
+.flexslider.mediaSlider .flex-direction-nav .flex-prev {
+  border-radius: 0px 16px 16px 0px;
 }

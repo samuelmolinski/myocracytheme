@@ -174,8 +174,14 @@ function bones_wpsearch($form) {
 } // don't remove this bracket!
 
 function videoSearch() {
+    $arg1 =  array(
+        'show_option_none'=> 'Select',
+        'taxonomy' => 'current_video_cat'
+        );
     $form = '<form role="search" method="get" id="searchform" action="' . get_permalink() . '" >
-    <input type="hidden" name="post_type" value="events" />
+    <input type="hidden" name="post_type" value="video_type" />
+    <input type="hidden" name="catagory" value="video_type" />'.
+    wp_dropdown_categories( $arg1 ) .'
     <label class="screen-reader-text" for="s">' . __('Search for:', 'bonestheme') . '</label>
     <input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="'.esc_attr__('Search the videos...','bonestheme').'" />
     <input type="submit" id="searchsubmit" value="'. esc_attr__('Search') .'" />

@@ -53,9 +53,9 @@ function video_post_example() {
 	); /* end of register post type */
 	
 	/* this adds your post categories to your video post type */
-	register_taxonomy_for_object_type('category', 'video_type');
+	register_taxonomy_for_object_type('current_video_cat', 'video_type');
 	/* this adds your post tags to your video post type */
-	register_taxonomy_for_object_type('post_tag', 'video_type');
+	register_taxonomy_for_object_type('current_video_tag', 'video_type');
 	
 } 
 
