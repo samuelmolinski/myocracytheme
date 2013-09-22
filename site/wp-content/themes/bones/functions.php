@@ -174,26 +174,38 @@ function bones_wpsearch($form) {
 } // don't remove this bracket!
 
 function videoSearch() {
+    d(get_taxonomies());
     $arg1 =  array(
         'show_option_none'=> 'Select',
         'taxonomy' => 'current_video_cat'
         );
+    $opt = '';
+    $terms = get_terms('current_video_tag');
+    d($terms);
+    foreach ($terms as $term) {
+        $opt .= '<option class="level-0" value="'.$term->slug.'">'.$term->name.'</option>';
+    }
     $form = '<form role="search" method="get" id="searchform" action="' . get_permalink() . '" > 
     <input type="hidden" name="post_type" value="video_type" />
-    <input type="hidden" name="catagory" value="video_type" />'.
-    wp_dropdown_categories( $arg1 ) .'
+    <select name="cat" id="cat" class="postform">
+     <option value="-1">Choose one...</option>'.
+    $opt .'
+    </select>
     <label class="screen-reader-text" for="s">' . __('Search for:', 'bonestheme') . '</label>
     <input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="'.esc_attr__('Search the videos...','bonestheme').'" />
     <input type="submit" id="searchsubmit" value="'. esc_attr__('Search') .'" />
     </form>';
     return $form;
 }
-/*// REMOVE BAD P and BR TAGS FROM NAME ANCHORS
-add_filter('the_content', 'remove_bad_pbr_tags');
-function remove_bad_pbr_tags($content) {
-        $pattern = '/<br*\/>(?=\s*<h([1-9])>)/sm';
-        $replacement = "";
-    $content = preg_replace($pattern, $replacement, $content);
-    return $content;
+/*function click_taxonomy_dropdown($taxonomy) { ?>
+    <form action="/" method="get">
+    <select name="cat" id="cat" class="postform">
+    <option value="-1">Choose one...</option>
+    <?php
+    $terms = get_terms($taxonomy);
+    foreach ($terms as $term) {
+        printf( '<option class="level-0" value="%s">%s</option>', $term->slug, $term->name );
+    }
+    echo '</select></form>';
 }*/
 
