@@ -53,9 +53,9 @@ function custom_post_example() {
 	); /* end of register post type */
 	
 	/* this adds your post categories to your custom post type */
-	register_taxonomy_for_object_type('category', 'custom_type');
+	register_taxonomy_for_object_type('current_issues_cat', 'custom_type');
 	/* this adds your post tags to your custom post type */
-	register_taxonomy_for_object_type('post_tag', 'custom_type');
+	register_taxonomy_for_object_type('current_issues_tag', 'custom_type');
 	
 } 
 

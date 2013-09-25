@@ -2,24 +2,36 @@
 /*
 Template Name: Media
 */
-if($cat){	
-	$cat = array(
-		array(
+//d($_GET);
+$tax =array();
+if(isset($_GET['cat'])){	
+	$cat = 	array(
 			'taxonomy' => 'current_video_cat',
 			'field' => 'slug',
-			'terms' => array(explode(',',$cat))
-		));
-} else {
-	$cat = array();
+			'terms' => array($_GET['cat'])
+		);
+	$tax[] = $cat;
 }
+if(isset($_GET['tag'])){	
+	$tag = array(
+			'taxonomy' => 'current_video_cat',
+			'field' => 'slug',
+			'terms' => array($_GET['tag'])
+		);
+	$tax[] = $tag;
+}
+if(isset($_GET['tag'])&&isset($_GET['cat'])) {
+	$tax['relation'] = 'AND';
+} 
 
 $args = array( 
 	'post_type' => 'video_type', 
 	'posts_per_page' => 10, 
 	'page'=> $page,
-	'tax_query' => $cat
+	'tax_query' => $tax
 );
 
+//d($args);
 $loop = new WP_Query( $args );
 
 $featuredVideos = get_featured_posts('video_type', 3);
@@ -33,12 +45,10 @@ $featuredVideos = get_featured_posts('video_type', 3);
 				<div id="inner-content" class="wrap clearfix">
 			
 				    <div id="main" class="twelvecol first clearfix" role="main">
-				    	
-
-				    	<?php echo videoSearch(); ?>
-
+				    	<div class="advanceSearch clearfix">
+				    	<?php videoSearch(); ?>
+				    	</div>
 						<div class="matte">
-				    	<?php  ?>
 				    	<div class="flexslider mediaSlider">
 							<ul class="slides">
 								<?php foreach ($featuredVideos->posts as $key => $value) {
@@ -112,14 +122,11 @@ $featuredVideos = get_featured_posts('video_type', 3);
 					
         					<article id="post-not-found" class="hentry clearfix">
         					    <header class="article-header">
-        						    <h1><?php _e("Oops, Post Not Found!", "bonestheme"); ?></h1>
+        						    <h1><?php _e("Oops, No Videos Were Found!", "bonestheme"); ?></h1>
         						</header>
         					    <section class="entry-content">
-        						    <p><?php _e("Uh Oh. Something is missing. Try double checking things.", "bonestheme"); ?></p>
+        						    <p><?php _e("Try a different search", "bonestheme"); ?></p>
         						</section>
-        						<footer class="article-footer">
-        						    <p><?php _e("This is the error message in the page-custom.php template.", "bonestheme"); ?></p>
-        						</footer>
         					</article>
 					
 					    <?php endif; ?>

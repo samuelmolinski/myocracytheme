@@ -57,7 +57,7 @@ function video_post_example() {
 	/* this adds your post tags to your video post type */
 	register_taxonomy_for_object_type('current_video_tag', 'video_type');
 	
-} 
+}
 
 	// adding the function to the Wordpress init
 	add_action( 'init', 'video_post_example');

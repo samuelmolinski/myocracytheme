@@ -41,7 +41,13 @@
 			
 				<div id="inner-header" class="wrap clearfix">
 					<div class="preheader">
-						<div class="login-register"><a href="<?php echo home_url(); ?>/login/" class="login">Login</a> or <a href="<?php echo home_url(); ?>/registration-choice/" class="register">Register</a></div>
+						<div class="login-register">
+							<?php if ( !is_user_logged_in() ) { ?>
+							<a href="<?php echo home_url(); ?>/login/" class="login">Login</a> or <a href="<?php echo home_url(); ?>/registration-choice/" class="register">Register</a>
+							<?php } else { ?>
+							<a href="<?php echo home_url(); ?>/user-profile/" class="register">Profile</a>
+							<?php } ?>
+						</div>
 					</div>
 
 					<!-- to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> -->

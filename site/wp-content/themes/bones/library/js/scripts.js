@@ -80,6 +80,7 @@ jQuery(document).ready(function($) {
         return false;
     });
     initRepeatFields();
+    $('form.register-voter, form.register-politician').NiceIt();
 
 }); /* end of as page load scripts */
 
@@ -123,6 +124,7 @@ function resizeQueue() {
     var cf_height = jQuery('#candidate-slider .flexslider').height();
     var ca_height = jQuery('#candidate-slider .advanceSearch').height();
     jQuery('#candidate-slider .advanceSearch').height(cf_height);
+    //jQuery('form.register-voter, form.register-politician').NiceIt();
 }
 
 function sumRepeating() {
@@ -199,38 +201,39 @@ function removeAction(youtubeItem) {
 
 function initRepeatFields(){
     log('initRepeatFields');
+    if(jQuery("input[name=youtube]").length) {
+        var v = jQuery("input[name=youtube]").val();
+        //log("v",v);
+        if(v != ""){
+            var inputsVals = JSON.parse(v);
+            //log("inputsVals", inputsVals);
+            var length = inputsVals.length,
+            element = null;
+        } else {
+            length = 0;
+            i=0;
+        }
+        
+        for (var i = 0; i < length; i++) {
+            element = inputsVals[i];
+            log("element", element);
+            jQuery(".repeatingField").append(getNewField(i, element.name, element.url, element.pid));
+        }
 
-    var v = jQuery("input[name=youtube]").val();
-    //log("v",v);
-    if(v != ""){
-        var inputsVals = JSON.parse(v);
-        //log("inputsVals", inputsVals);
-        var length = inputsVals.length,
-        element = null;
-    } else {
-        length = 0;
-        i=0;
+        i++;
+        jQuery(".repeatingField").append( getNewField(i, '', '', ''));
+
+        // Event handlers after we create the items
+        jQuery(".repeatingField .repeat-input").off().change(function(){
+            sumRepeating();
+            log('change');
+        }).blur(function(){log('blur');sumRepeating();});
+
+
+        jQuery(".repeatingField input.btn-remove-video").off().click(function(){
+            removeAction(this);
+        });
     }
-    
-    for (var i = 0; i < length; i++) {
-        element = inputsVals[i];
-        log("element", element);
-        jQuery(".repeatingField").append(getNewField(i, element.name, element.url, element.pid));
-    }
-
-    i++;
-    jQuery(".repeatingField").append( getNewField(i, '', '', ''));
-
-    // Event handlers after we create the items
-    jQuery(".repeatingField .repeat-input").off().change(function(){
-        sumRepeating();
-        log('change');
-    }).blur(function(){log('blur');sumRepeating();});
-
-
-    jQuery(".repeatingField input.btn-remove-video").off().click(function(){
-        removeAction(this);
-    });
 }
 
 function getNewField(i, title, url, pid){

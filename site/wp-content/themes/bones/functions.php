@@ -174,38 +174,45 @@ function bones_wpsearch($form) {
 } // don't remove this bracket!
 
 function videoSearch() {
-    d(get_taxonomies());
     $arg1 =  array(
         'show_option_none'=> 'Select',
         'taxonomy' => 'current_video_cat'
         );
     $opt = '';
-    $terms = get_terms('current_video_tag');
-    d($terms);
-    foreach ($terms as $term) {
-        $opt .= '<option class="level-0" value="'.$term->slug.'">'.$term->name.'</option>';
+    $terms_cat = get_terms('current_video_cat', array( "hide_empty" => 0 ));
+    $terms_tag = get_terms('current_video_tag', array( "hide_empty" => 0 ));
+    foreach ($terms_cat as $term) {
+        $opt1 .= '<option class="level-0" value="'.$term->slug.'">'.$term->name.'</option>';
     }
-    $form = '<form role="search" method="get" id="searchform" action="' . get_permalink() . '" > 
-    <input type="hidden" name="post_type" value="video_type" />
-    <select name="cat" id="cat" class="postform">
-     <option value="-1">Choose one...</option>'.
-    $opt .'
-    </select>
-    <label class="screen-reader-text" for="s">' . __('Search for:', 'bonestheme') . '</label>
-    <input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="'.esc_attr__('Search the videos...','bonestheme').'" />
-    <input type="submit" id="searchsubmit" value="'. esc_attr__('Search') .'" />
-    </form>';
-    return $form;
+    foreach ($terms_tag as $term) {
+        $opt2 .= '<option class="level-0" value="'.$term->slug.'">'.$term->name.'</option>';
+    }
+    ?> 
+    <form role="search" method="get" id="searchform" action="<?php the_permalink(); ?>" class="mediaSearch NiceIt clearfix" > 
+        <div class="slide-content clearfix">
+            <div class="sixcol first um_field_container clearfix">
+                <!-- <input type="hidden" name="post_type" value="video_type" /> -->
+                <select name="cat" id="cat" class="postform">
+                 <option value="-1">Choose one...</option>
+                 <?php echo $opt1 ?>
+                </select>
+                <select name="tag" id="tag" class="postform">
+                 <option value="-1">Choose one...</option>
+                 <?php echo $opt2; ?>
+                </select>
+            </div>
+            <div class="sixcol last um_field_container clearfix">
+                <input type="text" value="<?php echo get_search_query(); ?>" name="s" id="s" placeholder="<?php echo esc_attr__('Search the videos...','bonestheme'); ?>" />
+                <input type="submit" id="searchsubmit" value="<?php echo esc_attr__('Search'); ?>" class="btn btn-submit"/>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+(function($, window, undefined){
+    jQuery(document).ready(function(){
+        $('form.NiceIt').NiceIt();
+    });
+})(jQuery,window);
+</script>
+    <?php 
 }
-/*function click_taxonomy_dropdown($taxonomy) { ?>
-    <form action="/" method="get">
-    <select name="cat" id="cat" class="postform">
-    <option value="-1">Choose one...</option>
-    <?php
-    $terms = get_terms($taxonomy);
-    foreach ($terms as $term) {
-        printf( '<option class="level-0" value="%s">%s</option>', $term->slug, $term->name );
-    }
-    echo '</select></form>';
-}*/
-

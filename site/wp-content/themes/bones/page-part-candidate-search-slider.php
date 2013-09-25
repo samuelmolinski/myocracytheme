@@ -367,16 +367,17 @@
 		$(".gotoSearch").click(function() {
 			//$('#candidate-slider .flexslider').fadeToggle();
 			if ($(this).hasClass("upp")) {
-				$('#candidate-slider .flexslider').animate({'bottom':-$('#candidate-slider .flexslider').outerHeight()}, 1000);
+				$('#candidate-slider .flexslider').stop().animate({'bottom':-$('#candidate-slider .flexslider').outerHeight()}, 1000);
 				$(this).removeClass("upp");
 			} else {
-				$('#candidate-slider .flexslider').animate({'bottom':0}, 1000);
+				$('#candidate-slider .flexslider').stop().animate({'bottom':0}, 1000);
 				$(this).addClass("upp");
 			}
-			if(location.hash = "#quickSearch"){
-				$(".gotoSearch").trigger('click');
-			}
 		});
+		
+		if(location.hash = "#quickSearch"){
+			$(".gotoSearch").trigger('click');
+		}
 	});
 })(jQuery,window);
 </script>
